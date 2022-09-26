@@ -1,7 +1,7 @@
 package com.spring.project.user;
 
-import com.spring.project.token.Token;
-import com.spring.project.token.TokenRepository;
+import com.spring.project.accessToken.AccessToken;
+import com.spring.project.accessToken.AccessTokenRepository;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
@@ -11,12 +11,12 @@ import java.util.Optional;
 public class UserService {
 
     private final UserRepository userRepository;
-    private final TokenRepository tokenRepository;
+    private final AccessTokenRepository accessTokenRepository;
 
     public UserService(UserRepository userRepository,
-                       TokenRepository tokenRepository) {
+                       AccessTokenRepository accessTokenRepository) {
         this.userRepository = userRepository;
-        this.tokenRepository = tokenRepository;
+        this.accessTokenRepository = accessTokenRepository;
     }
 
     public List<User> getUser() {
@@ -31,13 +31,13 @@ public class UserService {
         userRepository.save(user);
     }
 
-    public void loginUser(User user, Token token) {
+    public void loginUser(User user, AccessToken accessToken) {
         Optional<User> userByLogin = userRepository.findUserByLogin(user.getLogin());
         if (userByLogin.isEmpty()) {
             throw new IllegalStateException("user not found");
         }
         // generate token(set) -> get token (get) -> add to table 'tokens' ?
-        tokenRepository.save(token);
+        accessTokenRepository.save(accessToken);
     }
 
     public void logoutUser(Long userId) {

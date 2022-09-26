@@ -1,4 +1,4 @@
-package com.spring.project.token;
+package com.spring.project.accessToken;
 
 import com.spring.project.user.User;
 
@@ -10,7 +10,7 @@ import java.util.Arrays;
 
 @Entity
 @Table(name="tokens")
-public class Token {
+public class AccessToken {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "tokens_sequence")
     private Long id;
@@ -23,7 +23,7 @@ public class Token {
 
     private LocalDateTime createdAt;
 
-    public Token() {
+    public AccessToken() {
 
     }
 

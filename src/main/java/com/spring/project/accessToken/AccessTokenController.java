@@ -1,7 +1,6 @@
-package com.spring.project.token;
+package com.spring.project.accessToken;
 
 import com.spring.project.user.User;
-import com.spring.project.user.UserRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,19 +9,17 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 
 @Controller
-public class TokenController {
+public class AccessTokenController {
 
-    private final UserRepository userRepository;
-    private final TokenRepository tokenRepository;
+    private final AccessTokenService accessTokenService;
 
-    public TokenController(UserRepository userRepository, TokenRepository tokenRepository) {
-        this.userRepository = userRepository;
-        this.tokenRepository = tokenRepository;
+    public AccessTokenController(AccessTokenService accessTokenService) {
+        this.accessTokenService = accessTokenService;
     }
 
     @PostMapping(path = "/sign-in")
     public void signInUser(@RequestBody User user) {
-//        userService.loginUser(user);
+        accessTokenService.loginUser(user);
     }
 
     @DeleteMapping(path = "/sign-out/{userId}")

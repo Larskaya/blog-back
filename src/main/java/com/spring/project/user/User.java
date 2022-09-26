@@ -1,6 +1,6 @@
 package com.spring.project.user;
 
-import com.spring.project.token.Token;
+import com.spring.project.accessToken.AccessToken;
 
 import javax.persistence.*;
 
@@ -12,8 +12,8 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "users_sequence")
     private Long id;
 
-    @OneToOne(mappedBy = "token")
-    private Token token;
+    @OneToOne(mappedBy = "accessToken")
+    private AccessToken accessToken;
 
     private String login;
 
@@ -35,12 +35,12 @@ public class User {
         this.id = id;
     }
 
-    public Token getToken() {
-        return token;
+    public AccessToken getToken() {
+        return accessToken;
     }
 
-    public void setToken(Token token) {
-        this.token = token;
+    public void setToken(AccessToken accessToken) {
+        this.accessToken = accessToken;
     }
 
     public String getLogin() {
@@ -63,7 +63,7 @@ public class User {
     public String toString() {
         return "User{" +
                 "id=" + id +
-                ", token=" + token +
+                ", token=" + accessToken +
                 ", login='" + login + '\'' +
                 ", password='" + password + '\'' +
                 '}';

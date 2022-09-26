@@ -1,6 +1,5 @@
 package com.spring.project.user;
 
-import com.spring.project.token.Token;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
